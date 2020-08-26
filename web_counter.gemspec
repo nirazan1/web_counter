@@ -7,9 +7,9 @@ Gem::Specification.new do |s|
   s.author      = 'Nirajan Pokhare'
   s.email       = 'nirazan@nirazan.com.np'
   s.files       = ['lib/web_counter.rb']
-  s.add_development_dependency 'rspec', '~> 3.9.0'
-  s.add_development_dependency "nokogiri"
-  s.add_development_dependency "pry"
+  s.add_development_dependency 'rspec', '~> 3.9'
+  s.add_development_dependency 'nokogiri', '~> 1.6'
+  s.add_development_dependency 'pry', '~> 0.12.2'
   s.homepage    =
     'http://rubygems.org/gems/web_counter'
   s.license       = 'MIT'
