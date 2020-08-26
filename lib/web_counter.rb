@@ -4,14 +4,15 @@ require 'nokogiri'
 
 class WebCounter
   LETTER_COUNT_BASE_URL = 'https://www.reuters.com'
+  WORD_COUNT_BASE_URL = 'https://developer.github.com/v3/#http-redirects'
   BASE_DIVIDER = 100
 
   def self.letter_count(letter, url=LETTER_COUNT_BASE_URL)
     texts(url).join('').scan(/\w/).inject(Hash.new(0)){|h, c| h[c] += 1; h}[letter.downcase]/BASE_DIVIDER
   end
 
-  def self.word_count
-    return 'Ok'
+  def self.word_count(word, url=WORD_COUNT_BASE_URL)
+    texts(url).each_with_object(Hash.new(0)) { |word,counts| counts[word] += 1}[word.downcase]
   end
 
   def self.element_count
