@@ -1,6 +1,10 @@
 # web_counter
 Gets count of letter, word or element from URLs
 
+Requirement
+1. `git`
+2. ruby version 2.6.0
+
 Installation Step
 
 1. Clone the repo `git clone https://github.com/nirazan1/web_counter.git`
