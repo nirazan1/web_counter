@@ -14,7 +14,8 @@ Usage
 2. require them gem `require 'web_counter'`
 3. Execute methods
 
-╭─nirazan at local in ~/Documents/web_counter on master✘✘✘ using ‹ruby-2.6.0› 20-08-27 - 21:22:40
+```
+─nirazan at local in ~/Documents/web_counter on master✘✘✘ using ‹ruby-2.6.0› 20-08-27 - 21:22:40
 ╰─⠠⠵ gem build web_counter.gemspec
   Successfully built RubyGem
   Name: web_counter
@@ -37,3 +38,5 @@ getting count of word status in site https://developer.github.com/v3/#http-redir
 2.6.0 :004 > WebCounter.element_count('pubDate')
 getting count of element pubDate in site https://www.yourlocalguardian.co.uk/sport/rugby/rss
  => 51
+```
+
