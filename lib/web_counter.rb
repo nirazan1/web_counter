@@ -9,10 +9,23 @@ class WebCounter
   BASE_DIVIDER = 100
 
   def self.letter_count(letter, url=LETTER_COUNT_BASE_URL)
-    texts(url).join('').scan(/\w/).inject(Hash.new(0)){|h, c| h[c] += 1; h}[letter.downcase]/BASE_DIVIDER
   end
 
   def self.word_count(word, url=WORD_COUNT_BASE_URL)
+    id = url.split('#').last
+    page = html(url)
+    start_element = page.at_css("[id=#{id}]").parent
+    start_element_index = page.search('h2').to_enum.with_index
+                              .find{|node| node.first == start_element }
+                              .last
+    end_element_index = start_element_index+1
+    words = page.xpath("//*[preceding-sibling::h2[#{start_element_index}]]"\
+                       "[following-sibling::h2[#{end_element_index}]]")
+                .map(&:content).join('').scan(/\w+/).map(&:downcase)
+    words.each_with_object(Hash.new(0)) { |word,counts| counts[word] += 1}[word.downcase]
+  end
+
+  def self.all_page_word_count(word, url=WORD_COUNT_BASE_URL)
     texts(url).each_with_object(Hash.new(0)) { |word,counts| counts[word] += 1}[word.downcase]
   end
 
